@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CentricTeam2.Models
 {
+    //test
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
