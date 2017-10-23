@@ -11,6 +11,8 @@ namespace CentricTeam2.Migrations.Context
         {
             AutomaticMigrationsEnabled = true;
             MigrationsDirectory = @"Migrations\Context";
+            AutomaticMigrationDataLossAllowed = true;
+            ContextKey = "CentricTeam2.DAL.Context";
         }
 
         protected override void Seed(CentricTeam2.DAL.Context context)

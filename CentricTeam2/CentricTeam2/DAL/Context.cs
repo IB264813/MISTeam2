@@ -11,9 +11,11 @@ namespace CentricTeam2.DAL
     {
         public Context(): base("name=cs4200")
         {
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<DAL.Context, CentricTeam2.Migrations.Context.Configuration>("cs4200"));
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<DAL.Context,CentricTeam2.Migrations.Context.Configuration>("cs4200"));
 
         }
+        public System.Data.Entity.DbSet<CentricTeam2.Models.UserDetails> UserDetails { get; set; }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -21,6 +23,5 @@ namespace CentricTeam2.DAL
             base.OnModelCreating(modelBuilder);
         }
 
-        public System.Data.Entity.DbSet<CentricTeam2.Models.UserDetails> UserDetails { get; set; }
     }
 }

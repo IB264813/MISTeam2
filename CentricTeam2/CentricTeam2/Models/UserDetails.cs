@@ -7,9 +7,16 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CentricTeam2.Models
 {
+
     public class UserDetails
     {
-        [Required]
+        
+    
+
+
+
+
+    [Required]
         public Guid ID { get; set; }
 
         [Required]
@@ -46,4 +53,28 @@ namespace CentricTeam2.Models
 
 
     }
-}
+    //public async Task<ActionResult> Register(RegisterViewModel model)
+    //{
+    //    //****this is probably not saving the phone, office and position info
+    //    if (ModelState.IsValid)
+    //    {
+    //        var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+    //        var result = await UserManager.CreateAsync(user, model.Password);
+    //        if (result.Succeeded)
+    //        {
+    //            await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
+    //            //comments removed
+    //            //Assign Role to user Here   
+    //            await this.UserManager.AddToRoleAsync(user.Id, model.UserRoles);
+    //            //redirect to your user create view
+    //            return RedirectToAction("Create", "userDetails");
+    //        }
+    //        // these lines will only be executed if the model is invalid
+    //        // meaning the system isn’t able to create an account
+    //        ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Admin"))
+    //                                  .ToList(), "Name", "Name");
+    //        AddErrors(result);
+    //    }
+
+    }
