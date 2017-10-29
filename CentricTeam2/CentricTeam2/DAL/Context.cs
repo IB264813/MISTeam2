@@ -16,9 +16,11 @@ namespace CentricTeam2.DAL
         }
         public System.Data.Entity.DbSet<CentricTeam2.Models.UserDetails> userDetails { get; set; }
 
+        public DbSet<Recognition> Recognition { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+
 
             base.OnModelCreating(modelBuilder);
         }

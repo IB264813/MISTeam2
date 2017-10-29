@@ -11,108 +11,109 @@ using CentricTeam2.Models;
 
 namespace CentricTeam2.Controllers
 {
-    public class UserDetailsController : Controller
+    public class RecognitionsController : Controller
     {
         private Context db = new Context();
 
-        // GET: UserDetails
+        // GET: Recognitions
         public ActionResult Index()
         {
-            return View(db.userDetails.ToList());
+            return View(db.Recognition.ToList());
         }
 
-        // GET: UserDetails/Details/5
+        // GET: Recognitions/Details/5
         public ActionResult Details(Guid? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            UserDetails userDetails = db.userDetails.Find(id);
-            if (userDetails == null)
+            Recognition recognition = db.Recognition.Find(id);
+            if (recognition == null)
             {
                 return HttpNotFound();
             }
-            return View(userDetails);
+            return View(recognition);
         }
 
-        // GET: UserDetails/Create
+        // GET: Recognitions/Create
         public ActionResult Create()
         {
+            ViewBag.ID = new SelectList(db.userDetails, "ID", "fullName");
             return View();
         }
 
-        // POST: UserDetails/Create
+        // POST: Recognitions/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Email,firstName,lastName,PhoneNumber,Position,hireDate,centicAnniversary,photo,businessUnit")] UserDetails userDetails)
+        public ActionResult Create([Bind(Include = "ID,award,recognizor,fullName,recognizationDate")] Recognition recognition)
         {
             if (ModelState.IsValid)
             {
-                userDetails.ID = Guid.NewGuid();
-                db.userDetails.Add(userDetails);
+                recognition.ID = Guid.NewGuid();
+                db.Recognition.Add(recognition);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(userDetails);
+            return View(recognition);
         }
 
-        // GET: UserDetails/Edit/5
+        // GET: Recognitions/Edit/5
         public ActionResult Edit(Guid? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            UserDetails userDetails = db.userDetails.Find(id);
-            if (userDetails == null)
+            Recognition recognition = db.Recognition.Find(id);
+            if (recognition == null)
             {
                 return HttpNotFound();
             }
-            return View(userDetails);
+            return View(recognition);
         }
 
-        // POST: UserDetails/Edit/5
+        // POST: Recognitions/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Email,firstName,lastName,PhoneNumber,Position,hireDate,centicAnniversary,photo,businessUnit")] UserDetails userDetails)
+        public ActionResult Edit([Bind(Include = "ID,award,recognizor,recognized,recognizationDate")] Recognition recognition)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(userDetails).State = EntityState.Modified;
+                db.Entry(recognition).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(userDetails);
+            return View(recognition);
         }
 
-        // GET: UserDetails/Delete/5
+        // GET: Recognitions/Delete/5
         public ActionResult Delete(Guid? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            UserDetails userDetails = db.userDetails.Find(id);
-            if (userDetails == null)
+            Recognition recognition = db.Recognition.Find(id);
+            if (recognition == null)
             {
                 return HttpNotFound();
             }
-            return View(userDetails);
+            return View(recognition);
         }
 
-        // POST: UserDetails/Delete/5
+        // POST: Recognitions/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)
         {
-            UserDetails userDetails = db.userDetails.Find(id);
-            db.userDetails.Remove(userDetails);
+            Recognition recognition = db.Recognition.Find(id);
+            db.Recognition.Remove(recognition);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

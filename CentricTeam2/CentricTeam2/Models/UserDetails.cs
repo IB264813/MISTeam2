@@ -33,20 +33,37 @@ namespace CentricTeam2.Models
         [RegularExpression(@"^(\(\d{3}\) |\d{3}-)\d{3}-\d{4}$", ErrorMessage = "Phone number must be entered in correct format. (xxx-xxx-xxxx)")]
         public string PhoneNumber { get; set; }
 
-        [Display(Name = "Office")]
-        public string Office { get; set; }
+        
 
-        [Display(Name = "Current position")]
+        [Display(Name = "Skills: ")]
         public string Position { get; set; }
 
-        [Display(Name = "Hire Date")]
+        [Display(Name = "Centric Anniversary: ")]
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime hireDate { get; set; }
 
+        [Display(Name = "Number of years with Centric: ")]
+        public int centicAnniversary { get; set; }
         public string photo { get; set; }
 
-        [Display(Name = "Business Unit")]
-        public string businessUnit { get; set; }
+        [Display(Name = "Business Unit: ")]
+        public location businessUnit { get; set; }
+
+        public enum location
+        {
+            Boston = 1,
+            Charlotte = 2,
+            Cincinnati = 3,
+            Columbus = 4,
+            Cleveland = 5,
+            India = 6,
+            Indianapolis = 7,
+            Miami = 8,
+            Seattle = 9,
+            StLouis = 10,
+            Tampa = 11
+        }
+        public ICollection<Recognition> Recognition { get; set; }
 
 
 
