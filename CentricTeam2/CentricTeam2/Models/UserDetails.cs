@@ -26,6 +26,7 @@ namespace CentricTeam2.Models
         [Required]
         [Display(Name = "Last Name: ")]
         public string lastName { get; set; }
+        public string fullName { get { return lastName + ", " + firstName; } }
 
         [Required]
         [Display(Name = "Phone number: ")]

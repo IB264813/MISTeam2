@@ -16,10 +16,13 @@ namespace CentricTeam2.Models
         public string recognizor { get; set; }
         [Display(Name = "Person receiving the recognition")]
         public string fullName { get { return lastName + ", " + firstName; }}
-        public virtual UserDetails UserDetails { get; set; }
 
         [Display(Name = "Date recognition given")]
         public DateTime recognizationDate { get; set; }
+        public string firstName { get; private set; }
+        public string lastName { get; private set; }
+        public virtual UserDetails UserDetails { get; set; }
+
         public enum CoreValue
         {
             Excellence = 1,
