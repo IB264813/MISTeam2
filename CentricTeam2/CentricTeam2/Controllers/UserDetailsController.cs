@@ -16,8 +16,17 @@ namespace CentricTeam2.Controllers
         private Context db = new Context();
 
         // GET: UserDetails
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
+            var testusers = from u in db.userDetails select u;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                testusers = testusers.Where(u => u.lastName.Contains(searchString)
+              || u.firstName.Contains(searchString));
+                // if here, users were found so view them
+                return View(testusers.ToList());
+            }
+
             return View(db.userDetails.ToList());
         }
 
