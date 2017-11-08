@@ -14,40 +14,40 @@ namespace CentricTeam2.Models
     [Required]
         public Guid ID { get; set; }
 
-        [Display(Name = "Email address: ")]
+        [Display(Name = " Email address ")]
         [Required]
         [EmailAddress(ErrorMessage = "Enter email address")]
         public string Email { get; set; }
 
         [Required]
-        [Display(Name = "First Name: ")]
+        [Display(Name = " First Name ")]
         public string firstName { get; set; }
 
         [Required]
-        [Display(Name = "Last Name: ")]
+        [Display(Name = " Last Name ")]
         public string lastName { get; set; }
         public string fullName { get { return lastName + ", " + firstName; } }
 
         [Required]
-        [Display(Name = "Phone number: ")]
+        [Display(Name = " Phone ")]
         [DataType(DataType.PhoneNumber)]
         [RegularExpression(@"^(\(\d{3}\) |\d{3}-)\d{3}-\d{4}$", ErrorMessage = "Phone number must be entered in correct format. (xxx-xxx-xxxx)")]
         public string PhoneNumber { get; set; }
 
         
 
-        [Display(Name = "Skills: ")]
+        [Display(Name = " Skills ")]
         public string Position { get; set; }
 
-        [Display(Name = "Centric Anniversary: ")]
+        [Display(Name = " Centric Anniversary ")]
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime hireDate { get; set; }
 
-        [Display(Name = "Number of years with Centric: ")]
+        [Display(Name = " Number of years with Centric ")]
         public int centicAnniversary { get; set; }
         public string photo { get; set; }
 
-        [Display(Name = "Business Unit: ")]
+        [Display(Name = " Business Unit ")]
         public location businessUnit { get; set; }
 
         public enum location
