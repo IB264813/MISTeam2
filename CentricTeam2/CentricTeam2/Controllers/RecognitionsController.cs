@@ -39,6 +39,7 @@ namespace CentricTeam2.Controllers
         // GET: Recognitions/Create
         public ActionResult Create()
         {
+            ViewBag.EmployeeGivingRecog = new SelectList(db.userDetails, "ID", "fullName");
             ViewBag.ID = new SelectList(db.userDetails, "ID", "fullName");
             return View();
         }

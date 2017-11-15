@@ -13,14 +13,14 @@ namespace CentricTeam2.Models
         [Display(Name = "Core value recognized")]
         public CoreValue award { get; set; }
         [Display(Name = "Person giving the recognition")]
-        public string recognizor { get; set; }
+        public string EmployeeGivingRecog { get; set; }
         [Display(Name = "Person receiving the recognition")]
         public string fullName { get { return lastName + ", " + firstName; }}
 
         [Display(Name = "Date recognition given")]
         public DateTime recognizationDate { get; set; }
-        public string firstName { get; private set; }
-        public string lastName { get; private set; }
+        public string firstName { get; set; }
+        public string lastName { get; set; }
         public virtual UserDetails UserDetails { get; set; }
 
         public enum CoreValue
