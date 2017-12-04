@@ -41,8 +41,8 @@ namespace CentricTeam2.Controllers
         public ActionResult Create()
         {
             ViewBag.EmployeeGivingRecog = new SelectList(db.userDetails, "ID", "Email");
-            ViewBag.EmployeeGivingRecog = new SelectList(db.Recognitions, "EmployeeGivingRecog", "RecognitionComments");
-            ViewBag.ID = new SelectList(db.UserDetails, "ID", "Email");
+            ViewBag.EmployeeGivingRecog = new SelectList(db.Recognition, "EmployeeGivingRecog", "RecognitionComments");
+            ViewBag.ID = new SelectList(db.userDetails, "ID", "Email");
             return View();
         }
 
@@ -60,9 +60,9 @@ namespace CentricTeam2.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.EmployeeGivingRecog = new SelectList(db.UserDetails, "ID", "Email", employeeRecognition.EmployeeGivingRecog);
-            ViewBag.EmployeeGivingRecog = new SelectList(db.Recognitions, "EmployeeGivingRecog", "RecognitionComments", employeeRecognition.EmployeeGivingRecog);
-            ViewBag.ID = new SelectList(db.UserDetails, "ID", "Email", employeeRecognition.ID);
+            ViewBag.EmployeeGivingRecog = new SelectList(db.userDetails, "ID", "Email", employeeRecognition.EmployeeGivingRecog);
+            ViewBag.EmployeeGivingRecog = new SelectList(db.Recognition, "EmployeeGivingRecog", "RecognitionComments", employeeRecognition.EmployeeGivingRecog);
+            ViewBag.ID = new SelectList(db.userDetails, "ID", "Email", employeeRecognition.ID);
             return View(employeeRecognition);
         }
 
@@ -78,9 +78,9 @@ namespace CentricTeam2.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.EmployeeGivingRecog = new SelectList(db.UserDetails, "ID", "Email", employeeRecognition.EmployeeGivingRecog);
-            ViewBag.EmployeeGivingRecog = new SelectList(db.Recognitions, "EmployeeGivingRecog", "RecognitionComments", employeeRecognition.EmployeeGivingRecog);
-            ViewBag.ID = new SelectList(db.UserDetails, "ID", "Email", employeeRecognition.ID);
+            ViewBag.EmployeeGivingRecog = new SelectList(db.userDetails, "ID", "Email", employeeRecognition.EmployeeGivingRecog);
+            ViewBag.EmployeeGivingRecog = new SelectList(db.Recognition, "EmployeeGivingRecog", "RecognitionComments", employeeRecognition.EmployeeGivingRecog);
+            ViewBag.ID = new SelectList(db.userDetails, "ID", "Email", employeeRecognition.ID);
             return View(employeeRecognition);
         }
 
@@ -97,9 +97,9 @@ namespace CentricTeam2.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.EmployeeGivingRecog = new SelectList(db.UserDetails, "ID", "Email", employeeRecognition.EmployeeGivingRecog);
-            ViewBag.EmployeeGivingRecog = new SelectList(db.Recognitions, "EmployeeGivingRecog", "RecognitionComments", employeeRecognition.EmployeeGivingRecog);
-            ViewBag.ID = new SelectList(db.UserDetails, "ID", "Email", employeeRecognition.ID);
+            ViewBag.EmployeeGivingRecog = new SelectList(db.userDetails, "ID", "Email", employeeRecognition.EmployeeGivingRecog);
+            ViewBag.EmployeeGivingRecog = new SelectList(db.Recognition, "EmployeeGivingRecog", "RecognitionComments", employeeRecognition.EmployeeGivingRecog);
+            ViewBag.ID = new SelectList(db.userDetails, "ID", "Email", employeeRecognition.ID);
             return View(employeeRecognition);
         }
 
