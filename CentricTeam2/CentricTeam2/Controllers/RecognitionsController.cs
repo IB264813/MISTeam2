@@ -18,7 +18,8 @@ namespace CentricTeam2.Controllers
         // GET: Recognitions
         public ActionResult Index()
         {
-            return View(db.Recognition.ToList());
+            var recognition = db.Recognition.Include(r => r.UserDetails);
+            return View(recognition.ToList());
         }
 
         // GET: Recognitions/Details/5
@@ -39,7 +40,6 @@ namespace CentricTeam2.Controllers
         // GET: Recognitions/Create
         public ActionResult Create()
         {
-            ViewBag.EmployeeGivingRecog = new SelectList(db.userDetails, "ID", "fullName");
             ViewBag.ID = new SelectList(db.userDetails, "ID", "fullName");
             return View();
         }
@@ -49,16 +49,17 @@ namespace CentricTeam2.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,award,recognizor,fullName,recognizationDate")] Recognition recognition)
+        public ActionResult Create([Bind(Include = "EmployeeGivingRecog,RecognitionId,ID,recognizationDate,RecognitionComments")] Recognition recognition)
         {
             if (ModelState.IsValid)
             {
-                recognition.ID = Guid.NewGuid();
+                recognition.EmployeeGivingRecog = Guid.NewGuid();
                 db.Recognition.Add(recognition);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Create", "EmployeeRecognitions");
             }
 
+            ViewBag.ID = new SelectList(db.userDetails, "ID", "fullName", recognition.ID);
             return View(recognition);
         }
 
@@ -74,6 +75,7 @@ namespace CentricTeam2.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.ID = new SelectList(db.userDetails, "ID", "fullName", recognition.ID);
             return View(recognition);
         }
 
@@ -82,7 +84,7 @@ namespace CentricTeam2.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,award,recognizor,recognized,recognizationDate")] Recognition recognition)
+        public ActionResult Edit([Bind(Include = "EmployeeGivingRecog,RecognitionId,ID,recognizationDate,RecognitionComments")] Recognition recognition)
         {
             if (ModelState.IsValid)
             {
@@ -90,6 +92,7 @@ namespace CentricTeam2.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.ID = new SelectList(db.userDetails, "ID", "fullName", recognition.ID);
             return View(recognition);
         }
 

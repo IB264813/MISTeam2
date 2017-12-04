@@ -10,36 +10,37 @@ namespace CentricTeam2.Models
 {
     public class EmployeeRecognition
     {
-        public Guid EmployeeRecognitionID { get; set; }
+        [Key]
+        public int EmployeeRecognitionID { get; set; }
 
-        [Display(Name = "Employee Getting Recognition")]
-        [Required(ErrorMessage = "Please select an employee")]
+        [Display(Name = "Date Recognition is Given")]
+        [DataType(DataType.DateTime)]
+        [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
+        public DateTime CurentDateTime { get; set; }
 
-        public Guid employeeId { get; set; }
-        [ForeignKey("Employeeid")]
 
-        public virtual UserDetails Employee { get; set; }
+        [Display(Name = "Comments")]
+        public string RecognitionComments { get; set; }
+
         [Display(Name = "Employee Giving Recognition")]
+        [Required]
+        public Guid EmployeeGivingRecog { get; set; }
 
-        public Guid recognizerId { get; set; }
-        [ForeignKey("Recognizerid")]
+        [ForeignKey("EmployeeGivingRecog")]
+        public virtual UserDetails Giver { get; set; }
 
-        public virtual UserDetails Recognizer { get; set; }
-        [Display(Name = "Recogniton Awarded")]
-
-        public Guid recognitionId { get; set; }
-        [ForeignKey("recognitionId")]
-
+        [Required]
+        [Display(Name = "Centric Core Value")]
+        public int RecognitionId { get; set; }
         public virtual Recognition Recognition { get; set; }
-        [Display(Name = "Date Awarded")]
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode =true)]
 
-        public Nullable<System.DateTime> awardDate { get; set; }
-        [Display(Name = "Why is this person getting this award")]
-        [Required(ErrorMessage = "Please enter why this person is getting this award")]
+        [Required]
 
-        public string description { get; set; }
+        [Display(Name = "Employee Being Recognized")]
+        public Guid ID { get; set; }
+
+        [ForeignKey("ID")]
+        public virtual UserDetails UserDetails { get; set; }
 
 
 

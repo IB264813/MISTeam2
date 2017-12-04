@@ -4,14 +4,15 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CentricTeam2.Models
 {
 
     public class UserDetails
     {
-        
-    [Required]
+
+        [Required]
         public Guid ID { get; set; }
 
         [Display(Name = " Email address ")]
@@ -34,7 +35,7 @@ namespace CentricTeam2.Models
         [RegularExpression(@"^(\(\d{3}\) |\d{3}-)\d{3}-\d{4}$", ErrorMessage = "Phone number must be entered in correct format. (xxx-xxx-xxxx)")]
         public string PhoneNumber { get; set; }
 
-        
+
 
         [Display(Name = " Skills ")]
         public string Position { get; set; }
@@ -49,6 +50,9 @@ namespace CentricTeam2.Models
 
         [Display(Name = " Business Unit ")]
         public location businessUnit { get; set; }
+        public ICollection<Recognition> Recognition { get; set; }
+        public ICollection<EmployeeRecognition> EmployeeRecognitions { get; set; }
+
 
         public enum location
         {
@@ -64,7 +68,6 @@ namespace CentricTeam2.Models
             StLouis = 10,
             Tampa = 11
         }
-        public ICollection<Recognition> Recognition { get; set; }
 
 
 

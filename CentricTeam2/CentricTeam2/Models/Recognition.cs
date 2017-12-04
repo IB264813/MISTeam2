@@ -4,24 +4,33 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace CentricTeam2.Models
 {
     public class Recognition
     {
         [Required]
-        public Guid ID { get; set; }
-        [Display(Name = "Core value recognized")]
-        public CoreValue award { get; set; }
+        [Key]
         [Display(Name = "Person giving the recognition")]
-        public string EmployeeGivingRecog { get; set; }
+        public Guid EmployeeGivingRecog { get; set; }
+
+        [Display(Name = "Core value recognized")]        
+        [Required]
+        public CoreValue RecognitionId { get; set; }
+
+        [Required]
         [Display(Name = "Person receiving the recognition")]
-        public string fullName { get { return lastName + ", " + firstName; }}
+        public Guid ID { get; set; }
+        public virtual UserDetails UserDetails { get; set; }
+
 
         [Display(Name = "Date recognition given")]
         public DateTime recognizationDate { get; set; }
-        public string firstName { get; set; }
-        public string lastName { get; set; }
-        public virtual UserDetails UserDetails { get; set; }
+
+        [Display(Name = "Comments")]
+        public string RecognitionComments { get; set; }
+
 
         public enum CoreValue
         {
@@ -31,6 +40,8 @@ namespace CentricTeam2.Models
             Innovate = 4,
             Balance = 5
         }
+        public ICollection<EmployeeRecognition> EmployeeRecognitions { get; set; }
+
     }
 
 }

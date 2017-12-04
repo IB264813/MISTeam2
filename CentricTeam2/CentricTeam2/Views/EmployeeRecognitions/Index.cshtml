@@ -1,0 +1,63 @@
+﻿@model IEnumerable<CentricTeam2.Models.EmployeeRecognition>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Giver.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Recognition.RecognitionComments)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserDetails.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CurentDateTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RecognitionComments)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RecognitionId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Giver.fullName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Recognition.RecognitionComments)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserDetails.fullName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CurentDateTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RecognitionComments)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RecognitionId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.EmployeeRecognitionID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.EmployeeRecognitionID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.EmployeeRecognitionID })
+        </td>
+    </tr>
+}
+
+</table>

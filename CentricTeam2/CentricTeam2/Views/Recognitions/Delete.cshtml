@@ -12,30 +12,35 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.award)
+            @Html.DisplayNameFor(model => model.UserDetails.Email)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.award)
+            @Html.DisplayFor(model => model.UserDetails.Email)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.fullName)
+            @Html.DisplayNameFor(model => model.RecognitionId)
         </dt>
 
-     
+        <dd>
+            @Html.DisplayFor(model => model.RecognitionId)
+        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.fullName)
-        </dt>
-
-        
         <dt>
             @Html.DisplayNameFor(model => model.recognizationDate)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.recognizationDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RecognitionComments)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RecognitionComments)
         </dd>
 
     </dl>

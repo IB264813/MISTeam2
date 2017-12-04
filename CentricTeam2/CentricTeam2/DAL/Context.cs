@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using CentricTeam2.Models;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace CentricTeam2.DAL
 {
@@ -18,12 +19,14 @@ namespace CentricTeam2.DAL
 
         public DbSet<Recognition> Recognition { get; set; }
 
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
 
 
-            base.OnModelCreating(modelBuilder);
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
         }
 
+        public System.Data.Entity.DbSet<CentricTeam2.Models.EmployeeRecognition> EmployeeRecognitions { get; set; }
     }
 }

@@ -1,0 +1,66 @@
+﻿@model CentricTeam2.Models.EmployeeRecognition
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>EmployeeRecognition</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Giver.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Giver.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Recognition.RecognitionComments)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Recognition.RecognitionComments)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserDetails.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserDetails.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CurentDateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CurentDateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RecognitionComments)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RecognitionComments)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RecognitionId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RecognitionId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.EmployeeRecognitionID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
