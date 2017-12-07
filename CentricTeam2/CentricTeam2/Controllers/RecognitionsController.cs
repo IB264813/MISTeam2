@@ -54,7 +54,7 @@ namespace CentricTeam2.Controllers
         {
             if (ModelState.IsValid)
             {
-                //recognition.EmployeeGivingRecog = Guid.NewGuid();
+                recognition.EmployeeGivingRecog = Guid.NewGuid();
                 db.Recognition.Add(recognition);
                 db.SaveChanges();
                 return RedirectToAction("Index");
