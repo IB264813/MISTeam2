@@ -27,6 +27,6 @@ namespace CentricTeam2.DAL
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
         }
 
-        public System.Data.Entity.DbSet<CentricTeam2.Models.EmployeeRecognition> EmployeeRecognitions { get; set; }
+        //public System.Data.Entity.DbSet<CentricTeam2.Models.EmployeeRecognition> EmployeeRecognitions { get; set; }
     }
 }

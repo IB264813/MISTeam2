@@ -26,7 +26,13 @@ namespace CentricTeam2.Models
 
 
         [Display(Name = "Date recognition given")]
-        public DateTime recognizationDate { get; set; }
+        [DataType(DataType.DateTime)]
+        [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
+        public DateTime recognizationDate
+        {
+            get { return DateTime.Now; }
+        }
+
 
         [Display(Name = "Comments")]
         public string RecognitionComments { get; set; }
@@ -40,7 +46,7 @@ namespace CentricTeam2.Models
             Innovate = 4,
             Balance = 5
         }
-        public ICollection<EmployeeRecognition> EmployeeRecognitions { get; set; }
+        //public ICollection<EmployeeRecognition> EmployeeRecognitions { get; set; }
 
     }
 
