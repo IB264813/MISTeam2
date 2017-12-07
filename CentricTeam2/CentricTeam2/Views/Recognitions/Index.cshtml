@@ -12,13 +12,13 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.UserDetails.fullName)
+            @Html.DisplayNameFor(model => model.Giver.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserDetail.Email)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.RecognitionId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.recognizationDate)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.RecognitionComments)
@@ -29,21 +29,21 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.UserDetails.Email)
+            @Html.DisplayFor(modelItem => item.Giver.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserDetail.Email)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.RecognitionId)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.recognizationDate)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.RecognitionComments)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.EmployeeGivingRecog }) |
-            @Html.ActionLink("Details", "Details", new { id=item.EmployeeGivingRecog }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.EmployeeGivingRecog })
+            @Html.ActionLink("Edit", "Edit", new { id=item.EmployeeRecognitionID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.EmployeeRecognitionID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.EmployeeRecognitionID })
         </td>
     </tr>
 }
