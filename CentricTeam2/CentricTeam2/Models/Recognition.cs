@@ -10,20 +10,22 @@ namespace CentricTeam2.Models
 {
     public class Recognition
     {
-        [Required]
-        [Key]
-        [Display(Name = "Person giving the recognition")]
-        public Guid EmployeeGivingRecog { get; set; }
 
-        [Display(Name = "Core value recognized")]        
+        [Key]
+        public int EmployeeRecognitionID { get; set; }
+
+        [Display(Name = "Core value recognized")]
         [Required]
         public CoreValue RecognitionId { get; set; }
 
-        [Required]
-        [Display(Name = "Person receiving the recognition")]
-        public Guid ID { get; set; }
-        public virtual UserDetails UserDetails { get; set; }
-
+        public enum CoreValue
+        {
+            Excellence = 1,
+            Integrity = 2,
+            Stewardship = 3,
+            Innovate = 4,
+            Balance = 5
+        }
 
         [Display(Name = "Date recognition given")]
         [DataType(DataType.DateTime)]
@@ -34,18 +36,31 @@ namespace CentricTeam2.Models
         }
 
 
+        [Required]
+        [Key]
+        [Display(Name = "Person giving the recognition")]
+        public Guid EmployeeGivingRecog { get; set; }
+
+        [ForeignKey("EmployeeGivingID")]
+        public virtual UserDetails Giver { get; set; }
+
+
+        [Required]
+        [Display(Name = "Person receiving the recognition")]
+        public Guid EmployeeGivingID { get; set; }
+        public virtual UserDetails UserDetails { get; set; }
+
+
+
+
         [Display(Name = "Comments")]
         public string RecognitionComments { get; set; }
 
+        [Display(Name = "Employee Being Recognized")]
+        public Guid ID { get; set; }
+        [ForeignKey("ID")]
+        public virtual UserDetails UserDetail { get; set; }
 
-        public enum CoreValue
-        {
-            Excellence = 1,
-            Integrity = 2,
-            Stewardship = 3,
-            Innovate = 4,
-            Balance = 5
-        }
         //public ICollection<EmployeeRecognition> EmployeeRecognitions { get; set; }
 
     }

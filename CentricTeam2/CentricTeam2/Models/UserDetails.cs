@@ -50,8 +50,8 @@ namespace CentricTeam2.Models
 
         [Display(Name = " Business Unit ")]
         public location businessUnit { get; set; }
-        public ICollection<Recognition> Recognition { get; set; }
-        public ICollection<EmployeeRecognition> EmployeeRecognitions { get; set; }
+       
+        
 
 
         public enum location
@@ -69,6 +69,8 @@ namespace CentricTeam2.Models
             Tampa = 11
         }
 
+
+        public ICollection<Recognition> Recognition { get; set; }
 
 
         //public async Task<ActionResult> Register(RegisterViewModel model)
