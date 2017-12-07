@@ -29,11 +29,12 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Centric's Core Values", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Send Recognition", "Index", "Recognitions") </li>
+                    <li>@Html.ActionLink("Send Recognition", "Create", "Recognitions") </li>
                     <li>@Html.ActionLink("Employee Index", "Index", "UserDetails")</li>
 
-</ul>
-                @Html.Partial("_LoginPartial")
+
+                   <li>@Html.Partial("_LoginPartial")</li>
+                </ul>
             </div>
         </div>
     </div>
