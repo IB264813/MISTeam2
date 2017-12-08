@@ -39,6 +39,7 @@ namespace CentricTeam2.Controllers
 
         // GET: Recognitions/Create
         public ActionResult Create()
+            
         {
             ViewBag.EmployeeGivingRecog = new SelectList(db.userDetails, "ID", "Email");
             ViewBag.ID = new SelectList(db.userDetails, "ID", "Email");
@@ -50,13 +51,15 @@ namespace CentricTeam2.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        //[Authorize]
         public ActionResult Create([Bind(Include = "EmployeeRecognitionID,RecognitionId,EmployeeGivingRecog,RecognitionComments,ID")] Recognition recognition)
         {
             if (ModelState.IsValid)
             {
+                recognition.ID = Guid.NewGuid();
                 db.Recognition.Add(recognition);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Create");
             }
 
             ViewBag.EmployeeGivingRecog = new SelectList(db.userDetails, "ID", "Email", recognition.EmployeeGivingRecog);
