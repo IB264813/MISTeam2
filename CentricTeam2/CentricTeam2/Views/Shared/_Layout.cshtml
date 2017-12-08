@@ -7,6 +7,8 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
+
+
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -19,11 +21,14 @@
                 </button>
                 @*@Html.ActionLink("Centric Recognition Page", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
                 <img src="https://assets.themuse.com/uploaded/companies/1332/small_logo.png?v=1a5d469b6c3b0b5f33c8b352b4ff53fbe976425a1f69247ac2dca9b7b0126814" alt="Paris" width="100" height="50">
+                </head>
+                <body>
+                   
 
 
 
 
-            </div>
+</div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
@@ -38,6 +43,10 @@
             </div>
         </div>
     </div>
+
+    
+
+
     <div class="container body-content">
         @RenderBody()
         <hr />
