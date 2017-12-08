@@ -47,6 +47,7 @@ namespace CentricTeam2.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Create([Bind(Include = "ID,Email,firstName,lastName,PhoneNumber,Position,hireDate,centicAnniversary,photo,businessUnit")] UserDetails userDetails)
         {
             if (ModelState.IsValid)

@@ -120,6 +120,7 @@ namespace CentricTeam2.Controllers
         // POST: Recognitions/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult DeleteConfirmed(int id)
         {
             Recognition recognition = db.Recognition.Find(id);
