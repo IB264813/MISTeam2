@@ -3,23 +3,23 @@
 }
 
 @*<div class="jumbotron">
-    <h1>Centic Consulting</h1>
-    <p class="lead"></p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>*@
+        <h1>Centic Consulting</h1>
+        <p class="lead"></p>
+        <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    </div>*@
 
 @*<head>
-    <style>
-        body {
-            background-image: url("http://www.redicincinnati.com/media/1696/centric_logo_color.png");
-            background-repeat: no-repeat;
-            background-position: right bottom;
-            margin-right: 100px;
-            background-attachment: Fixed;
-        }
-    </style>
+        <style>
+            body {
+                background-image: url("http://www.redicincinnati.com/media/1696/centric_logo_color.png");
+                background-repeat: no-repeat;
+                background-position: right bottom;
+                margin-right: 100px;
+                background-attachment: Fixed;
+            }
+        </style>
 
-</head>*@
+    </head>*@
 
 
 
@@ -42,34 +42,76 @@
 </body>
 </html>
 
-    <div class="row">
-        <div class="col-md-4">
-            <h2>Create your account</h2>
-            <p>
-                Build your account and stay connected!
-            </p>
+<div class="row">
+    <div class="col-md-4">
+        <h2>Create your account</h2>
+        <p>
+            Build your account and stay connected!
+        </p>
 
-            @*<p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>*@
-        </div>
-        <div class="col-md-4">
-            <h2>Core Values</h2>
+        @*<p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>*@
+    </div>
+    <div class="col-md-4">
+        <h2>Core Values</h2>
 
-            <p>Learn more about Centric's core values</p>
-            @*<p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>*@
-        </div>
-        <div class="col-md-4">
-            <h2>Get connected with your peers</h2>
-            <a href="https://twitter.com/centric">
+        <p>Learn more about Centric's core values</p>
+        @*<p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>*@
+    </div>
+    <div class="col-md-4">
+        <h2>Get connected with your peers</h2>
+        <a href="https://twitter.com/centric">
             <img src="https://png.icons8.com/twitter/color/96" title="Twitter" width="48" height="48">
 
             <a href="https://www.facebook.com/CentricConsultingNational/">
-            <img src="https://png.icons8.com/facebook/color/48" title="Facebook" width="48" height="48">
+                <img src="https://png.icons8.com/facebook/color/48" title="Facebook" width="48" height="48">
 
-            <a href="https://www.instagram.com/centric_consulting/">
-            <img src="https://png.icons8.com/instagram/color/48" title="Instagram" width="48" height="48">
+                <a href="https://www.instagram.com/centric_consulting/">
+                    <img src="https://png.icons8.com/instagram/color/48" title="Instagram" width="48" height="48">
 
-            <a href="https://www.linkedin.com/company/centric-consulting">
-            <img src="https://png.icons8.com/linkedin/color/48" title="LinkedIn" width="48" height="48">
-            @*<p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>*@
-        </div>
+                    <a href="https://www.linkedin.com/company/centric-consulting">
+                        <img src="https://png.icons8.com/linkedin/color/48" title="LinkedIn" width="48" height="48">
+                        @*<p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>*@
     </div>
+</div>
+
+@*<h2>@ViewBag.Title.</h2>
+<div class="row">
+    <div class="col-md-8">
+        <section id="loginForm">
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <h4>Use a local account to log in.</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.RememberMe)
+                            @Html.LabelFor(m => m.RememberMe)
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Log in" class="btn btn-default" />
+                    </div>
+                </div>
+            }*@
+
+    
+
