@@ -36,21 +36,12 @@ namespace CentricTeam2.Models
         }
 
 
-        [Required]
-        
+        [Required]       
         [Display(Name = "Person giving the recognition")]
         public Guid EmployeeGivingRecog { get; set; }
 
         [ForeignKey("EmployeeGivingRecog")]
         public virtual UserDetails Giver { get; set; }
-
-
-        //[Required]
-        //[Display(Name = "Person receiving the recognition")]
-        //public Guid EmployeeGivingID { get; set; }
-        //public virtual UserDetails UserDetails { get; set; }
-
-
 
 
         [Display(Name = "Comments")]
