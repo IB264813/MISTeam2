@@ -11,6 +11,7 @@ using CentricTeam2.Models;
 
 namespace CentricTeam2.Controllers
 {
+    [Authorize]
     public class RecognitionsController : Controller
     {
         private Context db = new Context();

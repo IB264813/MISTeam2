@@ -8,17 +8,29 @@ using System.Web;
 using System.Web.Mvc;
 using CentricTeam2.DAL;
 using CentricTeam2.Models;
+using Microsoft.AspNet.Identity;
 
 namespace CentricTeam2.Controllers
 {
+    [Authorize]
     public class UserDetailsController : Controller
     {
         private Context db = new Context();
 
         // GET: UserDetails
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
-            return View(db.userDetails.ToList());
+            {
+                var testusers = from u in db.userDetails select u;
+                if (!string.IsNullOrEmpty(searchString))
+                {
+                    testusers = testusers.Where(u => u.lastName.Contains(searchString)
+                    || u.firstName.Contains(searchString));
+
+                    return View(testusers.ToList());
+                }
+                return View(db.userDetails.ToList());
+            }
         }
 
         // GET: UserDetails/Details/5
@@ -52,10 +64,25 @@ namespace CentricTeam2.Controllers
         {
             if (ModelState.IsValid)
             {
-                userDetails.ID = Guid.NewGuid();
+                // userDetails.UID = Guid.NewGuid();
+                //db.UserDetails.Add(userDetails);
+                Guid memberID;
+                Guid.TryParse(User.Identity.GetUserId(), out memberID);
+                userDetails.ID = memberID;
                 db.userDetails.Add(userDetails);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                catch (Exception)
+                {
+
+                    return View("DuplicateUser");
+
+                }
+
+
             }
 
             return View(userDetails);
@@ -73,7 +100,17 @@ namespace CentricTeam2.Controllers
             {
                 return HttpNotFound();
             }
-            return View(userDetails);
+            Guid memberID;
+            Guid.TryParse(User.Identity.GetUserId(), out memberID);
+            if (userDetails.ID == memberID)
+            {
+                return View(userDetails);
+            }
+            else
+            {
+                return View("NotAuthorized");
+            }
+
         }
 
         // POST: UserDetails/Edit/5
@@ -104,7 +141,17 @@ namespace CentricTeam2.Controllers
             {
                 return HttpNotFound();
             }
-            return View(userDetails);
+            Guid memberID;
+            Guid.TryParse(User.Identity.GetUserId(), out memberID);
+            if (userDetails.ID == memberID)
+            {
+                return View(userDetails);
+            }
+            else
+            {
+                return View("NotAuthorized");
+            }
+            //return View(userDetails);
         }
 
         // POST: UserDetails/Delete/5
