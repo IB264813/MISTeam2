@@ -42,8 +42,8 @@ namespace CentricTeam2.Controllers
         public ActionResult Create()
             
         {
-            ViewBag.EmployeeGivingRecog = new SelectList(db.userDetails, "ID", "Email");
-            ViewBag.ID = new SelectList(db.userDetails, "ID", "Email");
+            ViewBag.EmployeeGivingRecog = new SelectList(db.userDetails, "ID", "fullName");
+            ViewBag.ID = new SelectList(db.userDetails, "ID", "fullName");
             return View();
         }
 
@@ -57,14 +57,14 @@ namespace CentricTeam2.Controllers
         {
             if (ModelState.IsValid)
             {
-                recognition.ID = Guid.NewGuid();
+                //recognition.ID = Guid.NewGuid();
                 db.Recognition.Add(recognition);
                 db.SaveChanges();
-                return RedirectToAction("Create");
+                return RedirectToAction("Index");
             }
 
-            ViewBag.EmployeeGivingRecog = new SelectList(db.userDetails, "ID", "Email", recognition.EmployeeGivingRecog);
-            ViewBag.ID = new SelectList(db.userDetails, "ID", "Email", recognition.ID);
+            ViewBag.EmployeeGivingRecog = new SelectList(db.userDetails, "ID", "fullName", recognition.EmployeeGivingRecog);
+            ViewBag.ID = new SelectList(db.userDetails, "ID", "fullName", recognition.ID);
             return View(recognition);
         }
 
