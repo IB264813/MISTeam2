@@ -268,7 +268,9 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Recognitions\Create.cshtml" />
     <Content Include="Views\Recognitions\Delete.cshtml" />
-    <Content Include="Views\Recognitions\Details.cshtml" />
+    <Content Include="Views\Recognitions\Awards.cshtml">
+      <BrowseToURL>~/Recognitions/Awards</BrowseToURL>
+    </Content>
     <Content Include="Views\Recognitions\Edit.cshtml" />
     <Content Include="Views\Recognitions\Index.cshtml" />
     <Content Include="Views\EmployeeRecognitions\Create.cshtml" />

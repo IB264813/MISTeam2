@@ -17,10 +17,31 @@ namespace CentricTeam2.Controllers
         private Context db = new Context();
 
         // GET: Recognitions
-        public ActionResult Index()
+        public ActionResult Index(Guid? id, string emp)
         {
             var recognition = db.Recognition.Include(r => r.Giver).Include(r => r.UserDetail);
-            return View(recognition.ToList());
+            if (id != null)
+            {
+                recognition = db.Recognition.Where(e => e.ID == id).Include(e => e.UserDetail).Include(e => e.RecognitionId).Include(e => e.EmployeeGivingRecog);
+
+                ViewBag.Awardee = emp;
+                var awards = (from aw in recognition
+                              group aw by new
+                              { e = aw.UserDetail.ID, a = aw.RecognitionId } into g
+                              select new
+                              { receiverID = g.Key.e, awardID = g.Key.a, AwardCount = g.Count() });
+                ViewBag.AwardList = awards.ToList();
+
+                return View("Awards");
+
+
+            }
+            else
+            {
+                return View(recognition.ToList());
+
+            }
+
         }
 
         // GET: Recognitions/Details/5

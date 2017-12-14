@@ -12,10 +12,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Giver.fullName)
+            Employee Being Recognized 
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.UserDetail.fullName)
+            Employee Giving Recognition
         </th>
         <th>
             @Html.DisplayNameFor(model => model.RecognitionId)
@@ -41,9 +41,8 @@
             @Html.DisplayFor(modelItem => item.RecognitionComments)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.EmployeeRecognitionID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.EmployeeRecognitionID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.EmployeeRecognitionID })
+            @Html.ActionLink("Show Individual Results", "Index", new { id=item.ID, emp=item.UserDetail.fullName }) |
+            
         </td>
     </tr>
 }
